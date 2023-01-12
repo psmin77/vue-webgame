@@ -13,14 +13,33 @@ module.exports = {
     module: {
         rules: [{
             test: /\.vue$/,
-            loader: 'vue-loader'
-        }]
+            use: 'vue-loader'
+        }, {
+            test: /\.css$/,
+            use: [
+                'vue-style-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        esModule: false,
+                    }
+                }]
+        }],
     },
     plugins: [
         new VueLoaderPlugin()
     ],
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'dist')
-    }
+        path: path.join(__dirname, 'dist'),
+    },
+    devServer: {
+        devMiddleware: {
+            index: true,
+            publicPath: "/dist"
+        },
+        static: {
+            directory: path.resolve(__dirname),
+        }
+    },
 };
