@@ -7,8 +7,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue'],
     },
-    entry: { // 여러 개의 스크립트를 통합해서 관리하는 하나의 메인 스크립트
-        app: path.join(__dirname, 'main.js'),
+    entry: {
+        app: path.join(__dirname, 'main.js')
     },
     module: {
         rules: [{
@@ -19,8 +19,8 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin()
     ],
-    output: { // 메인 스크립트를 사용하기 위해 설정하는 파일 이름과 경로
+    output: {
         filename: '[name].js',
         path: path.join(__dirname, 'dist')
-    },
+    }
 };
