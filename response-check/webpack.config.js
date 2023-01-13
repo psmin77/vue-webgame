@@ -8,12 +8,12 @@ module.exports = {
         extensions: ['.js', '.vue'],
     },
     entry: {
-        app: path.join(__dirname, 'main.js')
+        app: path.join(__dirname, 'main.js'),
     },
     module: {
         rules: [{
             test: /\.vue$/,
-            use: 'vue-loader'
+            use: 'vue-loader',
         }, {
             test: /\.css$/,
             use: [
@@ -23,23 +23,21 @@ module.exports = {
                     options: {
                         esModule: false,
                     }
-                }]
+                },
+            ]
         }],
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
     ],
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'dist'),
+        publicPath: '/dist/',
     },
     devServer: {
-        devMiddleware: {
-            index: true,
-            publicPath: "/dist"
-        },
-        static: {
-            directory: path.resolve(__dirname),
-        }
-    },
+        devMiddleware: {publicPath: '/dist'},
+        static: {directory: path.resolve(__dirname)},
+        hot: true
+    }
 };
