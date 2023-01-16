@@ -35,7 +35,7 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         publicPath: '/dist/',
     },
-    devServer: {
+    devServer: { // 안됐는데 되는 이유...? 프로젝트랑 컴퓨터 재부팅하고 모듈 재설치해서 된 것으로 추측
         devMiddleware: {publicPath: '/dist'},
         static: {directory: path.resolve(__dirname)},
         open: true,

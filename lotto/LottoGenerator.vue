@@ -30,7 +30,7 @@ export default {
         LottoBall
     },
     data() {
-        return {
+        return {                                                               
             winNumbers: getWinNumbers(),
             winBalls: [],
             bonus: null,
@@ -52,9 +52,4 @@ export default {
 </script>
 
 <style scoped>
-#computer {
-    width: 142px;
-    height: 200px;
-    background-position: 0 0;
-}
 </style>
