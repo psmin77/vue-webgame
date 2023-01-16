@@ -1,76 +1,50 @@
 <template>
     <div>
-        <div id="screen" :class="state" @click="onClickScreen">{{message}}</div>
-        <template v-if="result.length">
-            <div>평균 시간: {{average}}ms</div>
-            <button @click="onReset">리셋</button>
-        </template>
+        <div id="computer" :style="computedStyleObject"></div>
+        <div>
+            <button @click="onClickButton('scissors')">가위</button>
+            <button @click="onClickButton('rock')">바위</button>
+            <button @click="onClickButton('paper')">보</button>
+        </div>
+        <div>{{result}}</div>
+        <div>현재 {{score}}점</div>
     </div>
 </template>
 
 <script>
-let startTime = 0;
-let endTime = 0;
-let timeout = null;
+const rspCoords = {
+    'rock': '0',
+    'scissors': '-142px',
+    'paper': '-284px',
+};
 
 export default {
     data() {
         return {
-            result: [],
-            state: 'waiting',
-            message: '클릭해서 시작하세요.',
+            imgCoord: rspCoords.rock,
+            result: '',
+            score: 0
         };
     },
     computed: {
-        average() {
-            return this.result.reduce((a, c) => a + c, 0) / this.result.length || 0;
+        computedStyleObject() {
+            return {
+                background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${this.imgCoord} 0`
+            };
         }
     },
     methods: {
-        onReset() {
-            this.result = [];
-        },
-        onClickScreen() {
-            if (this.state === 'waiting') {
-                this.state = 'ready';
-                this.message = '초록색이 되면 클릭하세요.';
-                timeout = setTimeout(() => {
-                    this.state = 'now';
-                    this.message = '지금 클릭!';
-                    startTime = new Date();
-                }, Math.floor(Math.random() * 1000) + 2000); // 2~3초
+        onClickButton(choice){
 
-            } else if (this.state === 'ready') {
-                clearTimeout(timeout);
-                this.state = 'waiting';
-                this.message = '너무 성급하시군요! 초록색이 된 후에 클릭하세요.'
-
-            } else if (this.state === 'now') {
-                endTime = new Date();
-                this.state = 'waiting';
-                this.message = '클릭해서 시작하세요.';
-                this.result.push(endTime - startTime);
-            }
         }
     },
 };
 </script>
 
 <style scoped>
-#screen {
-    width: 300px;
+#computer {
+    width: 142px;
     height: 200px;
-    text-align: center;
-    user-select: none;
-}
-#screen.waiting {
-    background-color: aqua;
-}
-#screen.ready {
-    background-color: red;
-    color: white;
-}
-#screen.now {
-    background-color: greenyellow;
+    background-position: 0 0;
 }
 </style>
