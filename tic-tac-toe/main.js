@@ -1,6 +1,4 @@
 import Vue from 'vue';
-import TicTactoe from "./TicTacToe.vue";
+import TicTacToe from "./TicTacToe";
 
-new Vue({
-    render: createElement => createElement(TicTactoe)
-}).$mount('#root');
+new Vue(TicTacToe).$mount('#root');
