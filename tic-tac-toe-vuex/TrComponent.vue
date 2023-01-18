@@ -1,6 +1,6 @@
 <template>
     <table>
-        <td-component v-for="(cellData, index) in rowData" :key="index" :cell-data="cellData" :cell-index="index" :row-index="rowIndex"></td-component>
+        <td-component v-for="(cellData, index) in rowData" :key="index" :cell-index="index" :row-index="rowIndex"></td-component>
     </table>
 </template>
 
@@ -16,8 +16,12 @@ export default {
           parent: '부모 컴포넌트'
       }
     },
+    computed: {
+        rowData() {
+            return this.$store.state.tableData[this.rowIndex];
+        }
+    },
     props: {
-        rowData: Array,
         rowIndex: Number
     }
 }

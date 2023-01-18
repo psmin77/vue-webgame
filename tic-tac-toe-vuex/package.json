@@ -1,5 +1,5 @@
 {
-  "name": "tic-tac-toe",
+  "name": "tic-tac-toe-vuex",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "vue": "^2.6.12",
-    "vuex": "^4.1.0"
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "css-loader": "^6.6.0",
