@@ -1,7 +1,7 @@
 <template>
     <div>
         <mine-form />
-        <div> {{ timer }} </div>
+        <div> Timer: {{ timer }} </div>
         <table-component />
         <div> {{ result }} </div>
     </div>

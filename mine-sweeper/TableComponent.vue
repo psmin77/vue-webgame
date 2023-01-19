@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import {CODE, OPEN_CELL, FLAG_CELL, QUESTION_CELL, NORMALIZE_CELL} from './store';
+import {CODE, OPEN_CELL, FLAG_CELL, QUESTION_CELL, NORMALIZE_CELL, CLICK_MINE} from './store';
 
 export default {
     computed: {
@@ -59,7 +59,7 @@ export default {
                     case CODE.CLICK_MINE:
                         return '꽝';
                     default:
-                        return '';
+                        return this.$store.state.tableData[row][cell] || '';
                 }
             }
         }
